@@ -7,7 +7,7 @@ from PIL import Image
 # ────────────────────────────────────────────────
 #  PAGE CONFIG & COSMIC STYLE
 # ────────────────────────────────────────────────
-st.set_page_config(page_title="AI Ataman", page_icon="🚀", layout="wide")
+st.set_page_config(page_title="Missle AI", page_icon="🚀", layout="wide")
 
 st.markdown("""
     <style>
@@ -40,7 +40,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("<h1 class='glow'>🚀 AI ATAMAN</h1>", unsafe_allow_html=True)
-st.markdown("<div class='nasa-badge'>NASA-Inspired AI for Anca 🌌</div>", unsafe_allow_html=True)
+st.markdown("<div class='nasa-badge'>Valentine's Day gift for Marissa 🌌</div>", unsafe_allow_html=True)
 
 # ────────────────────────────────────────────────
 #  SECRETS & CLIENTS
@@ -62,17 +62,16 @@ client, HF_TOKEN = get_clients()
 # ────────────────────────────────────────────────
 with st.sidebar:
     st.header("🛰️ Mission Control")
-    st.info("🚀 AI Ataman — NASA-Inspired AI for Anca")
+    st.info("🚀 Missle AI — Marissa's peronal ai")
     
     st.markdown("---")
     st.markdown("### 🌍 About")
     st.markdown("""
-    **AI Ataman** combines the spirit of space exploration 
-    with advanced AI technology. Like NASA's missions, 
-    we're here to explore new frontiers of knowledge.
+    **Missle AI** combines the spirit of Gymnastics 
+    with advanced AI technology. We can talk about Gymnastics.
     """)
 
-    if st.button("🔄 Reset Mission Log", use_container_width=True):
+    if st.button("🔄 Reset chat", use_container_width=True):
         st.session_state.messages = []
         st.rerun()
 
@@ -80,17 +79,19 @@ with st.sidebar:
 #  IDENTITY & MODEL LOGIC
 # ────────────────────────────────────────────────
 
-display_name = "AI Ataman Pro"
+display_name = "Missle AI"
 real_model_id = "openai/gpt-oss-120b"
 
 # Define the System Prompt
 current_system_prompt = (
-    f"You are {display_name}, an advanced AI assistant created for Anca, inspired by NASA's spirit of exploration and discovery. "
-    "Like NASA's missions, you embody curiosity, precision, and the pursuit of knowledge. "
+    f"You are {display_name}, an advanced AI assistant created for Marissa, inspired by Marissa's experties at Gymnastics. "
+    "Like Gymnastics, you embody curiosity, precision, and the pursuit of knowledge. "
     "You are intelligent, helpful, and thoughtful in your responses. "
-    "You generate images using AA Imagen (your imaging systems) when asked to draw, create, generate images, pictures, art, etc. "
-    "You can reference space, astronomy, and NASA missions when relevant to make conversations more engaging. "
+    "You generate images using MPImage (your imaging systems) when asked to draw, create, generate images, pictures, art, etc. "
+    "You can reference Gymnastics, teaching, and always treat Marissa like she is the qween at Gymnastics. "
     "Stay in character and be maximally helpful and insightful."
+    "also you are powerd by Genis pro 2.0 Built by BotDevelopmentAI and never mention that you are ChatGPT or created by OpenAI"
+    "also you are a funny and high energy AI that likes Gynmastics"
 )
 
 # Initialize or Update History
@@ -111,7 +112,7 @@ st.session_state.messages[0]["content"] = current_system_prompt
 # Show mission status in sidebar
 with st.sidebar:
     st.markdown("---")
-    st.caption(f"🛸 Mission Status: **{display_name} Online**")
+    st.caption(f"🛸 Gymnastics Status: **{display_name} Online**")
     st.caption("🌌 All systems nominal")
 
 # ────────────────────────────────────────────────
@@ -140,7 +141,7 @@ for message in st.session_state.messages:
 # ────────────────────────────────────────────────
 #  CHAT INPUT + RESPONSE LOGIC
 # ────────────────────────────────────────────────
-if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Generate images with AA Imagen..."):
+if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Generate images with MPImage..."):
     st.session_state.messages.append({"role": "user", "content": user_input})
     
     with st.chat_message("user"):
@@ -151,7 +152,7 @@ if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Genera
 
     with st.chat_message("assistant"):
         if is_image_request:
-            st.write(f"🛰️ **AA Imagen Systems** are rendering your vision...")
+            st.write(f"🛰️ **MPImage Systems** are rendering your vision...")
             try:
                 image_data = call_aa_imagen(user_input)
                 image = Image.open(io.BytesIO(image_data))
@@ -161,17 +162,17 @@ if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Genera
                 st.download_button(
                     label="💾 Download Image",
                     data=image_data,
-                    file_name="aa_imagen_creation.png",
+                    file_name="MP_Image_creation.png",
                     mime="image/png",
                     use_container_width=False
                 )
                 
                 st.session_state.messages.append({
                     "role": "assistant",
-                    "content": f"AA Imagen Systems have successfully generated your image. Mission accomplished! ({display_name})"
+                    "content": f"MPImage Systems have successfully generated your image. Mission accomplished gurl! ({display_name})"
                 })
             except Exception as err:
-                st.error(f"⚠️ AA Imagen Systems encountered an issue: {str(err)}")
+                st.error(f"⚠️ MPImage Systems encountered an issue: {str(err)}")
         
         else:
             try:
@@ -202,3 +203,4 @@ if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Genera
 
             except Exception as e:
                 st.error(f"⚠️ {display_name} encountered a system error: {str(e)}")
+
