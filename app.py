@@ -39,7 +39,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 class='glow'>🚀 AI ATAMAN</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='glow'>🚀 Missle AI</h1>", unsafe_allow_html=True)
 st.markdown("<div class='nasa-badge'>Valentine's Day gift for Marissa 🌌</div>", unsafe_allow_html=True)
 
 # ────────────────────────────────────────────────
@@ -203,4 +203,5 @@ if user_input := st.chat_input(f"🚀 Communicate with {display_name} • Genera
 
             except Exception as e:
                 st.error(f"⚠️ {display_name} encountered a system error: {str(e)}")
+
 
